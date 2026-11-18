@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+
+    <h1>Welcome to Home Page</h1>
+
+    <h2>Student Details</h2>
+
+    <p>Name: {{ data.name }}</p>
+    <p>Age: {{ data.age }}</p>
+    <p>Department: {{ data.department }}</p>
+
+    <h2>Student Marks</h2>
+
+    {% for mark in marks %}
+        <p>{{ mark }}</p>
+    {% endfor %}
+
+</body>
+</html>
