@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #eef1f5;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: #1e3a5f;
+            padding: 20px 40px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .navbar span {
+            font-size: 15px;
+            color: #e2e8f0;
+        }
+
+        /* Dashboard */
+
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+            padding: 20px;
+        }
+
+        .dashboard-card {
+            background: #ffffff;
+            width: 450px;
+            padding: 45px 35px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Profile Icon */
+
+        .profile-icon {
+            width: 85px;
+            height: 85px;
+            background: #e2eaf4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1e3a5f;
+            font-size: 35px;
+            margin: 0 auto 20px;
+        }
+
+        .dashboard-card h1 {
+            color: #1e293b;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-card p {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* Logout Button */
+
+        .logout-btn {
+            padding: 12px 30px;
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 500px) {
+            .navbar {
+                padding: 18px;
+            }
+
+            .navbar h2 {
+                font-size: 20px;
+            }
+
+            .dashboard-card {
+                width: 100%;
+                padding: 35px 20px;
+            }
+
+            .dashboard-card h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <div class="navbar">
+        <h2>My Dashboard</h2>
+        <span>User Panel</span>
+    </div>
+
+    <!-- Dashboard Content -->
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-card">
+
+            <div class="profile-icon">
+                &#128100;
+            </div>
+
+            <h1>Welcome, {{ request.user.username }}!</h1>
+
+            <p>
+                You have successfully logged in to your dashboard.
+            </p>
+
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+
+                <button type="submit" class="logout-btn">
+                    Logout
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
